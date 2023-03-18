@@ -1,5 +1,7 @@
 import { Component } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 import {
   SearchWrap,
   SearchBtn,
@@ -13,6 +15,10 @@ export class Searchbar extends Component {
     query: '',
     images: [],
   };
+  static propTypes = {
+    onSubmit: PropTypes.func,
+    onChange: PropTypes.func,
+  };
 
   handleChange = event => {
     this.setState({ query: event.target.value });
@@ -22,13 +28,12 @@ export class Searchbar extends Component {
     event.preventDefault();
     if (this.state.query.trim() === '') {
       return toast.error('Please enter your search query', {
-        duration: 3000,
-        position: 'top-right',
-        style: {
-          border: '2px solid #1258c7',
-          padding: '16px',
-          background: '#e4e28e',
-        },
+        position: 'top-left',
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        theme: 'colored',
       });
     }
     this.props.onSubmit(this.state.query.trim().toLowerCase());
@@ -40,7 +45,6 @@ export class Searchbar extends Component {
     return (
       <SearchWrap>
         <SearchForm onSubmit={this.handleSubmit}>
-          <Toaster />
           <SearchBtn type="submit">
             <SearchLabel>Search</SearchLabel>
           </SearchBtn>
@@ -54,6 +58,7 @@ export class Searchbar extends Component {
             onChange={this.handleChange}
           />
         </SearchForm>
+        {/* <Toaster /> */}
       </SearchWrap>
     );
   }

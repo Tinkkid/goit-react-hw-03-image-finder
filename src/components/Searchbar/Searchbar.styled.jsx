@@ -34,7 +34,7 @@ export const SearchBtn = styled.button`
   width: 48px;
   height: 48px;
   border: 0;
-  background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
+  background-image: url('https://cdn1.iconfinder.com/data/icons/jumpicon-basic-ui-glyph-1/32/-_Magnifier-Search-Zoom--256.png');
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: center;
